@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <script type="text/javascript">
+      /*
+      一、JavaScript 的 typeof 返回哪些数据类型？
+      字符串，布尔，number，underfind，function,symabl,obj
+      
+      二： ***
+      alert(typeof null); //obj
+      alert(typeof undefined); //undefined
+      alert(typeof NaN); //number
+      alert(NaN == undefined); //false
+      alert(NaN == NaN); //false
+      var str = "123abc";
+      alert(typeof str++); //number
+      alert(str); //NaN
+      
+      
+      三、例举至少 3 种强制类型转换和 2 种隐式类型转换?
+      parseInt、parseFloat、Number、String    + - == ！
+      
+      四、JavaScript 的事件流模型都有什么？
+      事件捕获：事件由顶层对象触发，然后逐级向下传播，直到目标元素
+      目标阶段：事件绑定的元素身上
+      事件冒泡：事件由具体的元素先接受，然后逐级向上传播，直到找不到具体的元素
+      
+      五、BOM 对象有哪些，列举 window 对象？
+      window:是 JS 的最顶层对象，其他的 BOM 对象都是 window 对象的属性；
+      location:地址栏信息
+      navigator:浏览器信息
+      screen：客户端屏幕信息；
+      history:浏览器访问历史信息
+      
+      六、请简述 AJAX 及基本步骤？ ***
+      AJAX即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页的技术，通过在后台与服务器少量数据交互，JAX 可以使网页实现异步更新，意味着ajax在不重载的情况下对网页的某部分进行更新
+      1.初始化AJAX对象
+      var xhr = new XMLHttpRequest();
+      2.链接地址，准备数据
+      xhr.open(“方式”,”地址”,是否为异步);
+      3.接受数据完成触发事件
+      xhr.onload =function(){}
+      4.发送数据
+      xhr.send();
+      
+      
+      七、HTTP 状态消息 200 302 304 403 404 500 分别表示什么？
+      200：接受数据成功
+      302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的。
+      304：如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304 响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。
+      403：服务器已经理解请求，但拒绝执行
+      404：请求失败，请求的资源没有在服务器上发现
+      505：服务器端出现错误
+      
+      八、同步和异步的区别?****
+      首先同步异步于阻塞非阻塞并没有关系。同步异步主要是事情做完以后，如何进行处理、或者说关注的是一种消息通信机制。
+      同步的情况下，是由处理消息者自己去等待消息是否被触发；
+      而异步的情况下是由触发机制来通知处理消息者；
+      
+      九、GET和POST的区别，何时使用POST？
+      get:是通过地址栏传输的，发送的体积大小有限制，同时浏览器会保留请求地址的信息，不安全，get只能发送url格式
+      post:通过服务器传输的，发送的体积大小没有限制，浏览器会缓存地址，但不会记录post数据post 可以发送纯文本、URL编码格式、二进制格式的字符串，形式多样。
+      何时使用POST：
+        发送私密类数据（用户名、密码）（因为浏览器缓存记录特性）；
+        向服务器发送大量数据（数据大小限制区别）；
+        上传图片文件时候
+        以提交为目的的请求（类似语义化，get 表示请求，post 表示提交）；
+        
+      十、 AJAX 的局限性?
+        不支持浏览器的back按钮
+        AJAX暴露了与服务亲交互的细节，不安全
+        对浏览器的搜索引擎比较弱不会执行你的 JS 脚本，只会操作你的网页源代码；
+        跨域请求有一定的限制：Jasonp
+        
+      十一、new 操作符具体干了什么呢?
+      创建了一个对象
+      改变了this的指向
+      执行代码，通过this给对象添加属性方法
+      返回对象
+      
+      十二、null 和 undefined 的区别？
+        null表示空
+        undefined：undefined是有值，但是未定义
+        变量被声明了，但没有赋值时，就等于undefined。
+        对象没有赋值的属性，该属性的值为undefined。
+        函数没有返回值时，默认返回undefined。
+        
+      十三、JavaScript 原型，原型链 ? 有什么特点？
+      原型：每创建一个函数，函数身上都有一个属性值为prototype，他的值是一个对象，这个对象的作用在于当使用函数创建实例的时候，那么这些实例都会共享原型上的方法，和属性
+      原型链：js中每个对象都有一个指向他的原型对象内部的链接，这个原型对象又有自己的原型，直到某个对象再也没有原型指向，这个过程就被称为原型链。
+        当查找一个对象的属性时js，会向上遍历原型链，直到找到给定的属性名称为止
+        当查找到原型的顶部（Object.prototype）时候，还没有找到这个属性，就返回underfine
+        
+        
+      十四、实现对数组进行乱序
+      var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      a.sort(function(a,b){
+        return Math.random() - 0.5
+      })
+      console.log(a);
+      十五、实现一个函数 clone()，可以对 JavaScript 中的5种主要的数据类型（包括 Number、String、Object、Array、Boolean）进行值复制。
+      function clone(obj){
+        var o = obj.push?[]:{};
+        for (var attr in obj) {
+          if (typeof obj[attr] === 'obj') {
+            o[attr] = clone(obj[attr])
+          }else {
+            o[attr] = obj[attr];
+          }
+        }
+        return o;
+      }
+      1、判断代码输出结果
+      var test = 2;
+      console.log("test is a Number--" + (test.constructor == Number)); //true
+      function test1() {};
+      var t1 = new test1();
+      var test2 = "37degree";
+
+      console.info("typeof test--" + typeof test);  //number
+      console.info("typeof test1--" + typeof test1); //fun
+      console.info("typeof t1--" + typeof t1); //obj
+      console.info("t1 instanceof test1--" + (t1 instanceof Object)); //true
+      console.info("test instanceof Array--" + (test instanceof Array)); //test 是一个数字，所以他的构造函数应是 Number，而不是 Array，所以结果为 false；
+      2、解释 call 与 apply 的区别，并写出下面代码输出的结果：
+      都是改变this指向的
+      区别：call从第二个起就是实参，将被一一对应的赋值给源函数的形参
+          apply：只有2个参数，第二个为数组
+          
+          function add(a, b) {
+              alert(a + b);
+          }
+          function sub(a, b) {
+              alert(a - b);
+          }
+          add.call(sub, 3, 1);   //4   只是this指向改变了
+          
+          
+      3、研究下面 JS 代码是否有问题，有问题请描述问题并解决，没有问题请回答最终结果。
+          var a = 10;
+          sayHi();
+          function sayHi() {
+              a = a + 10;
+              console.log(a); //20
+              return a;
+          }
+          console.info(a); //20
+          console.info(sayHi() + 10); //首先又一次执行了 sayHi()，结果把 a 改成了 30，然后打印了一次 30，执行完以后返回了 30，然后在加 10，打印结果 40
+          <---------------->
+          var a = 10;
+          sayHi();
+          function sayHi() {
+              var a = a + 10;
+              console.info(a); //nan
+              return a;
+          }
+          console.info(a); //10
+          console.info(sayHi() + 10); //nan nan
+          <--------------->
+          function init() {
+              var ps = document.getElementsByTagName("p");  //body内有四个p标签
+              for (var i=0; i<ps.length; i++) {
+                  ps[i].onclick = function() {
+                      console.info(i);  //4
+                  }
+              }
+          }
+          
+          // 解决办法:
+          function init() {
+              var ps = document.getElementsByTagName("p");  //body内有四个p标签
+              for (var i=0; i<ps.length; i++) {
+                (function(n) {
+                  ps[n].onclick = function() {
+                      console.info(n);  //4
+                  }
+                })(i)
+              }
+          }
+          init()
+          <--------------------------------------------------------------->
+          var add = function(m) {
+            var temp = function(n) {
+                return add(m + n);
+            }
+            temp.toString = function() {
+                return m.toString(2)
+            }
+            return temp;
+        }
+        console.info(add(3)(4)(5)); 1100
+        
+      4、请实现以下功能：
+        需求：
+        设计一个列表，包含：地域、人数、百分比、时间。请实现按照 人数 与 时间 的排序算法。
+      */
+      var data = [
+        {
+            area: '深圳',
+            percentage: 15,
+            number: 80,
+            staytime: 2
+        },
+        {
+            area: '北京',
+            percentage: 30,
+            number: 150,
+            staytime: 4
+        },
+        {
+            area: '广州',
+            percentage: 25,
+            number: 60,
+            staytime: 3
+        },
+        {
+            area: '上海',
+            percentage: 30,
+            number: 100,
+            staytime: 4
+        }
+    ];
+    // desc:降序  asc升序
+    // ata Array 要排序的数据
+    // field string 排序依据的字段  是根据人数还是时间
+    // rule string 排序规则 DESC / ASC
+      function mySort(data, field, rule) {
+          //判断数据是不是数组
+          if (!(data instanceof Array)) {  //instanceof  左边的值是不是右边构造出来的
+              throw new TypeError('data is invalid'); //要排序的数据不存在或类型不正确
+          }
+          
+          if ( !(field in data[0]) ) { //排序参考字段不存在 如果数据里边没有时间和人数
+              throw new RangeError('field is invalid');
+          }
+          if ( !rule || ['DESC','ASC'].indexOf( (rule = rule.toString().toUpperCase()) ) == -1 ) {
+              rule = 'DESC';
+          }
+          
+          data.sort(function(a, b) {
+            
+              var v = a[field] - b[field];
+              
+              return rule == 'ASC' ? v : -v;
+          });
+      }
+      
+      mySort(data, 'number', 'ASC');
+      console.log( data );
+      
+    </script>
+  
+  </body>
+</html>

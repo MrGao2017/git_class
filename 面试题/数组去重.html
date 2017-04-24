@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // function aaa(arr) {
+      //   var result = [];
+      //   var obj = {}
+      //   for(var i=0;i<arr.length;i++){
+      //     if(!obj[arr[i]]){
+      //       result.push(arr[i])
+      //       obj[arr[i]] = 1;
+      //     }
+      //   }
+      //   return result;
+      // }
+      function aaa(arr) {
+        var result = [arr[0]];
+        for (var i = 1; i < arr.length; i++) {
+          console.log(toCon(arr[i]));
+          if(toCon(arr[i])){
+            result.push(arr[i])
+          }
+        }
+        function toCon(val) {
+          for (var i = 0; i < result.length; i++) {
+            if(result[i] == val){
+              return false;
+            }
+          }
+          return true;
+        }
+        return result;
+      }
+      console.log(aaa([1,3,4,5,2,4,3,6,1,3,2,2,2]));
+      
+      // console.log([...new Set(arr)])
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var str = 'sdjksssssbbbadsjmsgnsogn';
+      // function test(str){
+      //   var obj = {};
+      //   var num = 0;
+      //   var value = '';
+      //   // obj = {
+      //   //   a:[],
+      //   //   b:[]
+      //   // }
+      //   for (var i = 0; i < str.length; i++) {
+      //     if (!obj[str[i]]) { //如果对象下边没有出现循环的str
+      //       obj[str[i]] = [];  //就创建一个空的数组
+      //     }
+      //     obj[str[i]].push(str[i]) //把这个数据push到数组里边
+      //   }
+      //
+      //   for (var attr in obj) {
+      //     if(num < obj[attr].length){ //如果num小于对象中每个数组的长度，把这个长度付给num
+      //       num = obj[attr].length;
+      //       value = obj[attr][0];
+      //     }
+      //   }
+      //   return '最多的字符是:'+ value +'出现了:'+num+'次';
+      // }
+      // 正则
+      function test(str){
+        var arr = str.split(''); //用空把字符串分割成独立的数组
+        arr.sort();//把相同的排序
+        str = arr.join('') //用空格拼接成字符串
+        
+        var re = /(\w)\1+/g;//\1相当于 \w的复制 相等于一共2个   多次查找2项一样的
+        var num = 0;
+        var value = '';
+        
+        str.replace(re,function($0,$1){
+          if(num < $0.length){
+            num = $0.length;
+            value = $1;
+          }
+        })
+        return '最多的字符是:'+ value +'出现了:'+num+'次';
+      }
+      console.log(test(str));
+    </script>
+  </body>
+</html>

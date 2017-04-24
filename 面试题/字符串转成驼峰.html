@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// var str = 'border-bottom-color';
+			// function test(str){
+			// 	var arr = str.split('-');
+			// 	for (var i = 1; i < arr.length; i++) {
+			// 		// console.log(a   rr[i].substring(1));
+			// 		arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+			// 	}
+			// 	return arr.join('');
+			// }
+			// console.log(test(str));
+			// 正则
+			var str = 'border-bottom-color';
+			function test(str){
+				var re = /-(\w)/g;
+				return str.replace(re,function($0,$1){
+					return $1.toUpperCase();
+				})
+			}
+			console.log(test(str));
+		</script>
+	</body>
+</html>

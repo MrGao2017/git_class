@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var n = 50;
+      function show(n) {
+        // if(n<100){
+        //   return n;
+        // }else {
+        //   return 100;
+        // }
+      
+        // return n<100 ? n : 100;
+      
+        // return Math.min(n,100) //min() 方法可返回指定的数字中带有最低值的数字。
+        var arr = [n,100]
+        arr.sort(function(n1,n2){
+          return n1-n2 //从小到大
+        })
+        // console.log(arr);
+        return arr[0]
+      }
+      console.log(show(n));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // var a = 3;
+      // (function() {
+      //   alert(++a); //nan
+      //   var a = 5;
+      //   alert(++a) //6
+      // })()
+      // console.log(1+2+"4"-3);
+      // console.log(1+2+""+ "4"+1);
+      // console.log(parseFloat('12a83'));
+    
+      // var x= 5;
+      // function f1(num){
+      //   ++num;
+      //
+      // }
+      // var y = f1(x);
+      // console.log('x=' + x +';y=' + y); // 5 undefined
+      function outer(){
+        var i=0;
+        return function(){
+          return i++
+        }
+      }
+       var getNum = outer();
+      
+       console.log(getNum()); //1
+       console.log(getNum()); //2
+       i =1;
+       console.log(getNum());
+       console.log(getNum());
+    </script>
+  </body>
+</html>

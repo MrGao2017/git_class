@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var n=5;
+      // function show(n){
+      //   var arr = [];
+      //   return (function(){
+      //     arr.unshift(n)
+      //     n--;
+      //     if(n !=0){
+      //       arguments.callee(); //在匿名递归函数中使用 arguments.callee
+      //     }
+      //     return arr;
+      //   })()
+      // }
+      function show(n){
+        var arr = []
+        var arr2= [];
+        arr.length = n+1;
+        var str = arr.join('a');
+        str.replace(/a/g,function(){
+          arr2.unshift(n--)
+        })
+        return arr2;
+      }
+      console.log(show(n));
+    </script>
+  </body>
+</html>
